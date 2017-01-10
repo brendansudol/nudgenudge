@@ -6,9 +6,10 @@
     "node": "6.9.x"
   },
   "scripts": {
-    "start": "node server.js",
     "build": "NODE_ENV=production webpack -p",
-    "dev": "webpack -w --progress --colors"
+    "dev": "webpack -w --progress --colors",
+    "postinstall": "npm run build",
+    "start": "node server.js"
   },
   "dependencies": {
     "axios": "^0.15.3",
