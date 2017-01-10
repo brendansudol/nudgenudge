@@ -54,7 +54,7 @@ class App extends React.Component {
     console.log(token)
     this.setState({ stripe: 'saving' })
 
-    axios.post('/foo', token)
+    axios.post('/save', token)
       .then(response => { console.log(response) })
       .catch(error => { console.log(error) })
   }
