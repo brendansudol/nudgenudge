@@ -1,25 +1,23 @@
 import axios from 'axios'
 import React from 'react'
 
+import Goal from './Goal'
 import Header from './Header'
-
-const Foo = () => (
-  <div className='p2 bg-blue white border'>Foo</div>
-)
-
-const Baz = () => (
-  <div className='p2 bg-green white border'>Baz</div>
-)
+import Referee from './Referee'
+import Wager from './Wager'
 
 const sections = {
-  1: Foo,
-  2: Baz,
+  1: Goal,
+  2: Wager,
+  3: Referee,
 }
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
+      deadline: '',
+      goal: '',
       step: 1,
       stripe: null,
     }
@@ -83,6 +81,8 @@ class App extends React.Component {
           <button onClick={this.nextStep}>inc</button>
           <br />
           <button onClick={this.stripeOpen}>stripe</button>
+          <br />
+          <pre>{JSON.stringify(state)}</pre>
         </div>
       </div>
     )
