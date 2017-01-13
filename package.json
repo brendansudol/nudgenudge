@@ -6,16 +6,18 @@
     "node": "6.9.x"
   },
   "scripts": {
+    "start": "node server.js",
+    "watch": "npm run watch:server & npm run watch:client",
+    "watch:server": "nodemon server.js",
+    "watch:client": "webpack -w --progress --colors",
     "build": "NODE_ENV=production webpack -p",
-    "dev": "webpack -w --progress --colors",
-    "postinstall": "npm run build",
-    "start": "node server.js"
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "axios": "^0.15.3",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "pg": "^6.1.2",
+    "mongodb": "^2.2.20",
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
   },
@@ -26,6 +28,7 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
+    "nodemon": "^1.11.0",
     "webpack": "1.13.2"
   }
 }
