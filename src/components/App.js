@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 
+import Complete from './Complete'
 import Goal from './Goal'
 import Header from './Header'
 import Referee from './Referee'
@@ -10,6 +11,7 @@ const sections = {
   1: Goal,
   2: Wager,
   3: Referee,
+  4: Complete,
 }
 
 class App extends React.Component {
@@ -18,10 +20,15 @@ class App extends React.Component {
     this.state = {
       deadline: '',
       goal: '',
+      amount: '',
+      referee: '',
+      referee_email: '',
+      referee_self: false,
       step: 1,
       stripe: null,
     }
     this.handleChange = ::this.handleChange
+    this.handleCheckbox = ::this.handleCheckbox
     this.nextStep = ::this.nextStep
     this.previousStep = ::this.previousStep
     this.stripeTokenHandler = ::this.stripeTokenHandler
@@ -38,6 +45,11 @@ class App extends React.Component {
   handleChange(e) {
     const { name, value } = e.target
     this.setState({ [name]: value })
+  }
+
+  handleCheckbox(e) {
+    const { name, checked } = e.target
+    this.setState({ [name]: checked })
   }
 
   nextStep() {
@@ -73,6 +85,7 @@ class App extends React.Component {
           {Section && <Section
             {...state}
             onChange={this.handleChange}
+            onCheckbox={this.handleCheckbox}
             nextStep={this.nextStep}
             previousStep={this.previousStep}
           />}
